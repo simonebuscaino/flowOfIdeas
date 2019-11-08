@@ -8,7 +8,7 @@ const routes: Routes = [
  { path: 'theFlow', component: IdeaListComponent},
   {path: 'theFlow/editFlow/:id', component: IdeaEditComponent},
   {path: '', redirectTo: 'theFlow', pathMatch: 'full'}
-];
+]; // viv
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
