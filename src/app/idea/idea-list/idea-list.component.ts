@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Idea } from '../models/idea';
 import { MatSnackBar } from '@angular/material';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-idea-list',
