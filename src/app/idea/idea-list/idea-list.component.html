@@ -16,7 +16,7 @@
                               {{idea.title}}
                             </mat-panel-title>
                             <mat-panel-description>
-                                <span style="font-size: 10px;">Creata in data: {{idea.createDate | date}} | Aggiornata in data: {{idea.updateDate | date}}</span>
+                                <span style="font-size: 10px;">Creata il: {{idea.createDate | date}} | Ultima modifica: {{idea.updateDate | date}}</span>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
                         {{idea.description}}<br>
@@ -35,7 +35,8 @@
                                     mat-button
                                     aria-label="Elimina"
                                     matToolTip="Elimina idea"
-                                    color="primary">
+                                    color="primary"
+                                    (click)="delete(idea)">
                                     Elimina
                                 </button>
                             </mat-action-row>
