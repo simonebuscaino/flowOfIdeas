@@ -1,0 +1,67 @@
+<main class="container">
+
+      <div class="row mx-3 justify-content-center">
+          <mat-form-field class="col-10 example-form-field">
+              <input type="text" matInput placeholder="Search">
+              <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+      </div>
+
+         <div class="row justify-content-center">
+            <div class="col-10">
+                <mat-accordion class="mx-3">
+                    <mat-expansion-panel *ngFor="let idea of ideas">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              {{idea.title}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <span style="font-size: 10px;">Creata in data: {{idea.createDate | date}} | Aggiornata in data: {{idea.updateDate | date}}</span>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        {{idea.description}}<br>
+
+
+                            <mat-action-row>
+                                <button type="button"
+                                    mat-button
+                                    aria-label="Modifica"
+                                    matToolTip="Modifica idea"
+                                    color="primary"
+                                    [routerLink]="'/theFlow/editFlow/' + idea._id">
+                                    Modifica
+                                </button>
+                                <button type="button"
+                                    mat-button
+                                    aria-label="Elimina"
+                                    matToolTip="Elimina idea"
+                                    color="primary">
+                                    Elimina
+                                </button>
+                            </mat-action-row>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+
+
+<div class="row justify-content-center py-3">
+          <button type="button"
+              mat-fab
+              aria-label="Aggiungi"
+              matToolTip="Aggiungi idea"
+              color="primary"
+              routerLink="/theFlow/editFlow/0">
+              <mat-icon>add</mat-icon>
+          </button>
+</div>
+      <!-- <mat-nav-list>
+          <mat-list-item *ngFor="let plan of plans">
+              <a matLine [routerLink]="'/piani/' + plan._id">{{ plan.title }}</a>
+              <button mat-icon-button [routerLink]="'/piani/edita/' + plan._id">
+              <mat-icon>edit</mat-icon>
+              </button>
+          </mat-list-item>
+      </mat-nav-list> -->
+
+</main>

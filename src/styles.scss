@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+$link-color: #673ab7;
+$link-hover-color: currentColor;
+$link-hover-decoration: none;
+$label-margin-bottom: 0;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 600px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1600px
+);
+
+$container-max-widths: (
+    sm: 600px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1600px
+);
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/alert';
+
+* {
+    &:active,
+    :focus {
+        outline: none !important;
+    }
+}
+
+a:not(.mat-button):not(.mat-raised-button):not(.mat-fab):not(.mat-mini-fab):not([mat-list-item]){
+    color: $link-color;
+}
+
+html, body { height: 100%;   background-image: url('/assets/img/quadretti.png'); }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.positive {
+    color: #4caf50;
+}
+
+.negative {
+    color: #f44336;
+}
+
+hr.primary {
+    border: 1px solid $link-color;
+}
