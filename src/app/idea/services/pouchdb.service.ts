@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PouchDB } from 'pouchdb';
+import PouchDB from 'pouchdb';
 import { Idea } from '../models/idea';
 
 @Injectable({
