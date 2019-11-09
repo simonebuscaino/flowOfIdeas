@@ -37,6 +37,7 @@ export class IdeaListComponent implements OnInit {
     .catch(error => {
       console.error(error);
     });
+    this.ngOnInit();
   }
 }
 
