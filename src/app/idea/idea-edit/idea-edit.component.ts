@@ -101,5 +101,4 @@ export class IdeaEditComponent implements OnInit {
   get ideas() {
     return this.form.get('ideas') as FormArray;
   }
-  
 }
