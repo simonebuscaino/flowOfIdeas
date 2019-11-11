@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Idea } from '../models/idea';
 import { MatSnackBar } from '@angular/material';
+import { PouchdbService } from '../services/pouchdb.service';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-idea-list',
@@ -8,80 +10,40 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./idea-list.component.scss']
 })
 export class IdeaListComponent implements OnInit {
+  // form: Form;
   ideas: Idea[];
   date: Date;
 
-  constructor(private snackbar: MatSnackBar) {
+  constructor(private snackbar: MatSnackBar, private db: PouchdbService) {
     this.date = new Date();
    }
 
   ngOnInit() {
-    this.ideas = [
-      new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date),
-        new Idea('titolo1', 'Descrizione', this.date, this.date),
-        new Idea('titolo2', 'Descrizione', this.date, this.date),
-        new Idea('titolo3', 'Descrizione', this.date, this.date)
-      ];
-  }
-  checkDate($scope) {
-    $scope = new Date();
+    this.db.fetchIdea().then(ideas => {
+      this.ideas = ideas;
+    }).catch(error => {
+      console.log(error);
+      this.snackbar.open(
+        'Errore nel caricamento dei dati',
+        'Errore',
+        {duration: 2000});
+    });
   }
 
+  delete(idea) {
+    this.db
+    .deleteIdea(idea)
+    .then(() => {
+      console.log(`Rimosso ${idea.title}`);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    this.ngOnInit();
+  }
 
+  // submitForm() {
+
+  // }
 }
+

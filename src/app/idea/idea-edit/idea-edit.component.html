@@ -1,0 +1,34 @@
+<main>
+  <div class="container">
+    <ng-template [ngIf]="form">
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="row my-3">
+          <mat-form-field class="col" hintLabel="massimo 50 caratteri">
+            <input formControlName="title" matInput #title maxLength="50" placeholder="Titolo">
+            <mat-hint align="end">{{title.value?.length || 0}}/50</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="row my-3">
+          <mat-form-field class="col">
+            <textarea formControlName="description" matInput placeholder="Descrizione"></textarea>
+          </mat-form-field>
+        </div>
+        <button type="submit"
+          mat-fab aria-label="Salva"
+          matTooltip="Salva il piano"
+          [disabled]="!form.valid">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button class="ml-3" type="button"
+          mat-fab aria-label="Reset"
+          matTooltip="Ripristina all'ultima versione salvata"
+          [disabled]="!form.valid" (click)="init()">
+          <mat-icon>settings_backup_restore</mat-icon>
+        </button>
+      </form>
+    </ng-template>
+  </div>
+</main>
+
+
+<!-- routerLink="/theFlow/" -->
