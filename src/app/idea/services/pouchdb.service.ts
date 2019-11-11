@@ -43,14 +43,4 @@ export class PouchdbService {
   deleteIdea(idea: Idea): Promise<any> {
     return this.localDB.remove(idea);
   }
-
-  // searchIdea(title: string, description: string): Promise<Idea[]> {
-  //   return this.localDB.find({
-  //     selector: {
-  //       titolo: title,
-  //       descrizione: description
-  //     },
-  //     sort: ['titolo', 'descrizione']
-  //   });
-  // }
 }

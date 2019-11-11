@@ -7,7 +7,6 @@
           </mat-form-field>
       </div>
 
-
          <div class="row justify-content-center">
             <div class="col-10">
                 <mat-accordion class="mx-3">
@@ -17,12 +16,7 @@
                               {{idea.title}}
                             </mat-panel-title>
                             <mat-panel-description>
-                                <span style="font-size: 10px;">
-                                  Creata il: {{idea.createDate | date}}
-                                  <span *ngIf="idea.updateDate">
-                                     | Ultima modifica: {{idea.updateDate | date}}
-                                  </span>
-                                </span>
+                                <span style="font-size: 10px;">Creata il: {{idea.createDate | date}} | Ultima modifica: {{idea.updateDate | date}}</span>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
                         {{idea.description}}<br>
@@ -70,27 +64,5 @@
               </button>
           </mat-list-item>
       </mat-nav-list> -->
-
-
-      <!-- <ng-template>
-        <form [formGroup]="form" (ngSubmit)="submitForm()">
-          <div class="row mx-3 justify-content-center">
-              <mat-form-field class="col-8 example-form-field">
-                  <input type="text" matInput placeholder="Search">
-                  <mat-icon matSuffix>search</mat-icon>
-              </mat-form-field>
-              <div class="col-2">
-                <button type="submit"
-                mat-fab aria-label="Salva"
-                matTooltip="Salva il piano"
-                [disabled]="!form.valid">
-              <mat-icon>search</mat-icon>
-            </button>
-              </div>
-          </div>
-        </form>
-      </ng-template> -->
-
-
 
 </main>

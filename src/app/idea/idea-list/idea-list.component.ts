@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Idea } from '../models/idea';
 import { MatSnackBar } from '@angular/material';
 import { PouchdbService } from '../services/pouchdb.service';
-import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-idea-list',
@@ -10,7 +9,6 @@ import { Form } from '@angular/forms';
   styleUrls: ['./idea-list.component.scss']
 })
 export class IdeaListComponent implements OnInit {
-  // form: Form;
   ideas: Idea[];
   date: Date;
 
@@ -41,9 +39,5 @@ export class IdeaListComponent implements OnInit {
     });
     this.ngOnInit();
   }
-
-  // submitForm() {
-
-  // }
 }
 
