@@ -13,7 +13,7 @@ import { MatToolbarModule,
   MatSnackBarModule,
   MatExpansionModule,
   MatTooltipModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
@@ -31,7 +31,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatExpansionModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    FormsModule
   ],
   exports: [
     IdeaComponent
