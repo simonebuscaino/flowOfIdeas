@@ -1,22 +1,26 @@
 <main class="container">
 
       <div class="row mx-3 justify-content-center">
-          <mat-form-field class="col-10 example-form-field">
-              <input type="text" matInput placeholder="Search">
-              <mat-icon matSuffix>search</mat-icon>
+          <mat-form-field class="col-9">
+              <input type="text" matInput placeholder="Search" [(ngModel)]="title">
           </mat-form-field>
+          <mat-action-row class="col-1">
+            <button type="button" mat-mini-fab (click)="search()"><mat-icon>search</mat-icon></button>
+          </mat-action-row>
       </div>
 
          <div class="row justify-content-center">
             <div class="col-10">
-                <mat-accordion class="mx-3">
+                <mat-accordion>
                     <mat-expansion-panel *ngFor="let idea of ideas">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                               {{idea.title}}
                             </mat-panel-title>
                             <mat-panel-description>
-                                <span style="font-size: 10px;">Creata il: {{idea.createDate | date}} | Ultima modifica: {{idea.updateDate | date}}</span>
+                                <span style="font-size: 10px;">Creata il: {{idea.createDate | date}}
+                                  <span *ngIf="idea.updateDate"> | Ultima modifica: {{idea.updateDate | date}}</span>
+                                </span>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
                         {{idea.description}}<br>
